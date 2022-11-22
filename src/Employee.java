@@ -17,6 +17,7 @@ public class Employee {
         this.salary = salary;
     }
 
+    @Override
     public String toString() {
         return "id сотрудника: " + id + ", ФИО: " + surName + " " + name + " " + fatherName +
                 ", Зарплата: " + String.format("%.2f", salary) + "руб. Отдел: " + department;
