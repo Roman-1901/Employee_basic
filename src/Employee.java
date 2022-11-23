@@ -17,12 +17,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    @Override
-    public String toString() {
-        return "id сотрудника: " + id + ", ФИО: " + surName + " " + name + " " + fatherName +
-                ", Зарплата: " + String.format("%.2f", salary) + "руб. Отдел: " + department;
-    }
-
     public int getId() {
         return id;
     }
@@ -53,5 +47,16 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "id сотрудника: " + id + ", ФИО: " + surName + " " + name + " " + fatherName +
+                ", Зарплата: " + String.format("%.2f", salary) + "руб. Отдел: " + department;
+    }
+
+    public String toStringWithoutDepartment() {
+        return "id сотрудника: " + id + ", ФИО: " + surName + " " + name + " " + fatherName +
+                ", Зарплата: " + String.format("%.2f", salary) + "руб.";
     }
 }
