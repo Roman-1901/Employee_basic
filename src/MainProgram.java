@@ -16,7 +16,6 @@ public class MainProgram {
 
 
         Scanner sc = new Scanner(System.in);
-        System.out.println(" ");
         System.out.println("Базовая сложность");
         System.out.println("Получить список всех сотрудников со всеми имеющимися по ним данными - 1");
         System.out.println("Посчитать сумму затрат на зарплаты в месяц - 2");
