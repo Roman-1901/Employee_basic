@@ -45,7 +45,7 @@ public class Methods {
         minMaxOfSalary(max, array);
     }
 
-    //----------------Данный метод выводит список сотрудников по переданным параметрам зарплаты
+    //----------------Данный метод выводит список сотрудников по переданным параметрам минимальной/максимальной зарплаты из методов minSalary и maxSalary
     public static void minMaxOfSalary(double salary, Employee[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].getSalary() == salary) {
@@ -89,7 +89,7 @@ public class Methods {
 
     //----------Сотрудники с минимальной и максимальной зарплатой внутри отдела
     public static void minSalaryByDepartment(Employee[] array, int numDepartment) {
-        double min = calculationOfSumByDepartment(array,numDepartment);
+        double min = calculationOfSumByDepartment(array,numDepartment);  // переменной min присваивается значение суммы зарплат по отделу
         for (int i = 0; i < array.length; i++) {
             if (array[i].getDepartment() == numDepartment && array[i].getSalary() <= min) {
                 min = array[i].getSalary();
