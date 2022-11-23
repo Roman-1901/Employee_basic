@@ -14,7 +14,6 @@ public class MainProgram {
         employee[8] = new Employee("Ольга", "Шамаева", "Вадимовна", 5, 85000);
         employee[9] = new Employee("Галина", "Кирьянова", "Дмитриевна", 2, 85000);
 
-
         Scanner sc = new Scanner(System.in);
         System.out.println("Базовая сложность");
         System.out.println("Получить список всех сотрудников со всеми имеющимися по ним данными - 1");

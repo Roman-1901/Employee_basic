@@ -193,13 +193,13 @@ public class Methods {
     //----------------Введение в качестве параметра определенное число и вывод сотрудников с зарплатой меньше и больше данного числа
     public static void numEqual(Employee[] array, int num) {
         System.out.println("Сотрудники с зарплатой меньше " + num);
-        for (int i =0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (array[i].getSalary() < num) {
                 System.out.println(array[i].toStringWithoutDepartment());
             }
         }
         System.out.println("Сотрудники с зарплатой больше либо равно " + num);
-        for (int i =0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (array[i].getSalary() >= num) {
                 System.out.println(array[i].toStringWithoutDepartment());
             }
@@ -209,7 +209,7 @@ public class Methods {
 
 
 
-//---------------Дополнительные методы
+//---------------Дополнительные методы выводов
 public static void departmentInput() {
     System.out.println("Укажите номер отдела 1-5");
 }
