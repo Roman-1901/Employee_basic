@@ -41,65 +41,65 @@ public class MainProgram {
         Methods getInformation = new Methods();
         switch (num) {
             case 1:
-                getInformation.informationOfEmployees(employee);
+                getInformation.informationOfEmployees(employee); //Список всех сотрудников
                 break;
             case 2:
-                getInformation.sumOfMonth(employee);
+                getInformation.sumOfMonth(employee); //Рассчет суммы затрат на зарплаты в месяц
                 break;
             case 3:
-                getInformation.minSalary(employee);
+                getInformation.minSalary(employee); //Вывод сотрудников с минимальной зарплатой
                 break;
             case 4:
-                getInformation.maxSalary(employee);
+                getInformation.maxSalary(employee); //Вывод сотрудников с максимальной зарплатой
                 break;
             case 5:
-                getInformation.avgSalary(employee);
+                getInformation.avgSalary(employee); //Вычисление среднего значения всех зарпрат сотрудников
                 break;
             case 6:
-                getInformation.allFullNames(employee);
+                getInformation.allFullNames(employee); //Все сотрудники по ФИО
                 break;
             case 7:
-                getInformation.indexInput();
-                    getInformation.indexOfSalary(employee, sc.nextDouble());
-                getInformation.indexFinish();
+                getInformation.indexInput(); //Текст с просьбой указать индекс
+                    getInformation.indexOfSalary(employee, sc.nextDouble()); //Метод, вычисляющий рассчет индексации
+                getInformation.indexFinish(); //Метод, который выводит текст о том, что индексация произведена, для получения результата списка всех сотрудников с новой зарплатой, предлагает нажать 1
                     if (sc.nextInt() == 1) {
-                        getInformation.informationOfEmployees(employee);
+                        getInformation.informationOfEmployees(employee); //При нажатии 1 срабатывает метод, который выводит список сотрудников.
                     }
                 break;
             case 8:
-                getInformation.departmentInput();
-                getInformation.minSalaryByDepartment(employee, sc.nextInt());
+                getInformation.departmentInput(); //Текст с просьбой указать номер отдела
+                getInformation.minSalaryByDepartment(employee, sc.nextInt()); //Вывод сотрудников с минимальной зарплатой по отделу
                 break;
             case 9:
-                getInformation.departmentInput();
-                getInformation.maxSalaryByDepartment(employee, sc.nextInt());
+                getInformation.departmentInput(); //Текст с просьбой указать номер отдела
+                getInformation.maxSalaryByDepartment(employee, sc.nextInt()); //Вывод сотрудников с максимальной зарплатой по отделу
                 break;
             case 10:
-                getInformation.departmentInput();
-                getInformation.sumByDepartment(employee, sc.nextInt());
+                getInformation.departmentInput(); //Текст с просьбой указать номер отдела
+                getInformation.sumByDepartment(employee, sc.nextInt()); //Вывод общей суммы затрат на сотрудников в месяц по отделу
                 break;
             case 11:
-                getInformation.departmentInput();
-                getInformation.avgByDepartment(employee, sc.nextInt());
+                getInformation.departmentInput(); //Текст с просьбой указать номер отдела
+                getInformation.avgByDepartment(employee, sc.nextInt()); //Вычисление и вывод средней зарплаты по отделу
                 break;
             case 12:
-                getInformation.departmentInput();
+                getInformation.departmentInput(); //Текст с просьбой указать номер отдела
                 int departmentNum = sc.nextInt();
-                getInformation.indexInput();
+                getInformation.indexInput(); //Текст с просьбой указать индекс
                 double indexSalary = sc.nextDouble();
-                getInformation.indexByDepartment(employee,departmentNum,indexSalary);
-                getInformation.indexFinish();
+                getInformation.indexByDepartment(employee,departmentNum,indexSalary); //Метод, вычисляющий рассчет индексации внутри отдела
+                getInformation.indexFinish(); //Метод, который выводит текст о том, что индексация произведена, для получения результата списка всех сотрудников с новой зарплатой, предлагает нажать 1
                 if (sc.nextInt() == 1) {
-                    getInformation.employeesByDepartment(employee, departmentNum);
+                    getInformation.employeesByDepartment(employee, departmentNum); //При нажатии 1 срабатывает метод, который выводит список сотрудников отдела.
                 }
                 break;
             case 13:
-                getInformation.departmentInput();
-                getInformation.employeesByDepartment(employee, sc.nextInt());
+                getInformation.departmentInput(); //Текст с просьбой указать номер отдела
+                getInformation.employeesByDepartment(employee, sc.nextInt()); //Вывод всех сотрудников отдела
                 break;
             case 14:
-                getInformation.numInput();
-                getInformation.numEqual(employee,sc.nextInt());
+                getInformation.numInput(); //Текст с просьбой указать число
+                getInformation.numEqual(employee,sc.nextInt()); //В данном методе сравнивается зарплата сотрдуников с числом и выводится информация сотрудников, у кого выше и у кого ниже зарплата.
                 break;
             default:
                 break;
