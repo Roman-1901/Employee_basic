@@ -4,7 +4,7 @@ public class Methods {
     //----------Вывод всех сотрудников со всеми данными
     public static void informationOfEmployees(Employee[] array) {
         for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i].toString());
+            System.out.println(array[i]);
         }
     }
 
@@ -58,7 +58,8 @@ public class Methods {
     //-----------------Расчет и вывод среднего значения зарплат сотрудников. Внутри используется ранее созданный метод
     //-------------------calculationOfSum() для вычисления общей суммы зарплаты.
     public static void avgSalary(Employee[] array) {
-        System.out.println("Среднее значение зарплат: " + String.format("%.2f", calculationOfSum(array) / array.length));
+        double avgSum = calculationOfSum(array) / array.length;
+        System.out.println("Среднее значение зарплат: " + String.format("%.2f", avgSum));
     }
 
     //--------------------Вывод всех сотрудников по ФИО
