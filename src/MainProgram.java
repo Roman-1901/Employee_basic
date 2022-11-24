@@ -7,17 +7,17 @@ public class MainProgram {
         employee[1] = new Employee("Василий", "Макаров", "Геннадиевич", 2, 95000);
         employee[2] = new Employee("Наталья", "Хвостова", "Владимировна", 3, 100000);
         employee[3] = new Employee("Денис", "Подгурский", "Иванович", 3, 90000);
-        employee[4] = new Employee("Ирина", "Подольская", "Петровна", 4, 90000);
-        employee[5] = new Employee("Иван", "Самохин", "Васильевич", 4, 90000);
-        employee[6] = new Employee("Ирина", "Игнатова", "Сергеевна", 1, 90000);
-        employee[7] = new Employee("Сергей", "Панкратов", "Николевич", 5, 100000);
+        employee[4] = new Employee("Ирина", "Подольская", "Петровна", 4, 80000);
+        employee[5] = new Employee("Иван", "Самохин", "Васильевич", 4, 75000);
+        employee[6] = new Employee("Ирина", "Игнатова", "Сергеевна", 1, 95000);
+ //       employee[7] = new Employee("Сергей", "Панкратов", "Николевич", 5, 100000);
         employee[8] = new Employee("Ольга", "Шамаева", "Вадимовна", 5, 80000);
         employee[9] = new Employee("Галина", "Кирьянова", "Дмитриевна", 2, 85000);
         employee[10] = new Employee("Андрей", "Грузинов", "Николаевич", 4, 80000);
-        employee[11] = new Employee("Валентина", "Петрова", "Сергеевна", 1, 80000);
+//        employee[11] = new Employee("Валентина", "Петрова", "Сергеевна", 1, 80000);
         employee[12] = new Employee("Евгений", "Беседин", "Андреевич", 5, 95000);
-        employee[13] = new Employee("Дмитрий", "Тимошенко", "Анатолеьвич", 5, 80000);
-        employee[14] = new Employee("Надежда", "Семенова", "Викторовна", 2, 95000);
+        employee[13] = new Employee("Дмитрий", "Тимошенко", "Анатолеьвич", 5, 95000);
+//        employee[14] = new Employee("Надежда", "Семенова", "Викторовна", 2, 95000);
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Базовая сложность");

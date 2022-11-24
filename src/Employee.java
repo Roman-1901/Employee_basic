@@ -1,3 +1,6 @@
+import java.util.Comparator;
+import java.util.Objects;
+
 public class Employee {
     private final String name;
     private final String surName;
@@ -59,4 +62,7 @@ public class Employee {
         return "id сотрудника: " + id + ", ФИО: " + surName + " " + name + " " + fatherName +
                 ", Зарплата: " + String.format("%.2f", salary) + "руб.";
     }
+
+
 }
+

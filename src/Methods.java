@@ -1,9 +1,15 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Methods {
 
 
     //----------Вывод всех сотрудников со всеми данными
     public static void informationOfEmployees(Employee[] array) {
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             System.out.println(array[i]);
         }
     }
@@ -16,49 +22,69 @@ public class Methods {
     public static double calculationOfSum(Employee[] array) {
         double sum = 0;
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             sum += array[i].getSalary();
         }
         return sum;
     }
 
-    //--------------Расчет минимальной зарплаты и вывод сотрудников методом minMaxOfSalary()
+
+    //--------------Расчет минимальной зарплаты
     public static void minSalary(Employee[] array) {
         double min = array[0].getSalary();
         System.out.println("Сотрудники с минимальной зарплатой: ");
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getSalary() <= min) {
-                min = array[i].getSalary();
+        for (int j = 0; j < array.length; j++) {
+            if (array[j] == null) {
+                continue;
+            }
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == null) {
+                    continue;
+                }
+                min = Double.min(min, array[i].getSalary());
+            }
+            if (array[j].getSalary() == min) {
+                System.out.println("ФИО: " + array[j].getSurName() + " " + array[j].getName() + " " + array[j].getFatherName() +
+                        ", Зарплата: " + String.format("%.2f", array[j].getSalary()) + "руб.");
             }
         }
-        minMaxOfSalary(min, array);
     }
 
-    //----------------Расчет максимальной зарплаты и вывод сотрудников методом minMaxOfSalary()
+    //----------------Расчет максимальной зарплаты
     public static void maxSalary(Employee[] array) {
         double max = array[0].getSalary();
         System.out.println("Сотрудники с максимальной зарплатой: ");
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getSalary() >= max) {
-                max = array[i].getSalary();
+        for (int j = 0; j < array.length; j++) {
+            if (array[j] == null) {
+                continue;
+            }
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == null) {
+                    continue;
+                }
+                max = Double.max(max, array[i].getSalary());
+            }
+            if (array[j].getSalary() == max) {
+                System.out.println("ФИО: " + array[j].getSurName() + " " + array[j].getName() + " " + array[j].getFatherName() +
+                        ", Зарплата: " + String.format("%.2f", array[j].getSalary()) + "руб.");
             }
         }
-        minMaxOfSalary(max, array);
     }
 
-    //----------------Данный метод выводит список сотрудников по переданным параметрам минимальной/максимальной зарплаты из методов minSalary и maxSalary
-    public static void minMaxOfSalary(double salary, Employee[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getSalary() == salary) {
-                System.out.println("ФИО: " + array[i].getSurName() + " " + array[i].getName() + " " + array[i].getFatherName() +
-                        ", Зарплата: " + String.format("%.2f", array[i].getSalary()) + "руб.");
-            }
-        }
-    }
 
     //-----------------Расчет и вывод среднего значения зарплат сотрудников. Внутри используется ранее созданный метод
     //-------------------calculationOfSum() для вычисления общей суммы зарплаты.
     public static void avgSalary(Employee[] array) {
-        double avgSum = calculationOfSum(array) / array.length;
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
+            count++;
+        }
+        double avgSum = calculationOfSum(array) / count;
         System.out.println("Среднее значение зарплат: " + String.format("%.2f", avgSum));
     }
 
@@ -66,12 +92,12 @@ public class Methods {
     public static void allFullNames(Employee[] array) {
         System.out.println("ФИО всех сотрудников: ");
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             System.out.println(array[i].getSurName() + " " + array[i].getName() + " " + array[i].getFatherName());
         }
     }
-
-
-
 
 
     //------------Методы задания повышенной сложности
@@ -80,6 +106,9 @@ public class Methods {
     public static void indexOfSalary(Employee[] array, double percent) {
         if (percent >= 0) {
             for (int i = 0; i < array.length; i++) {
+                if (array[i] == null) {
+                    continue;
+                }
                 array[i].setSalary(array[i].getSalary() + array[i].getSalary() / 100 * percent);
             }
         } else {
@@ -88,45 +117,61 @@ public class Methods {
     }
 
 
-    //----------Сотрудники с минимальной и максимальной зарплатой внутри отдела
+    //----------Сотрудники с минимальной зарплатой внутри отдела
     public static void minSalaryByDepartment(Employee[] array, int numDepartment) {
-        double min = calculationOfSumByDepartment(array,numDepartment);  // переменной min присваивается значение суммы зарплат по отделу
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getDepartment() == numDepartment && array[i].getSalary() <= min) {
-                min = array[i].getSalary();
+        double min = Integer.MAX_VALUE;
+        System.out.println("Сотрудники отдела " + numDepartment + " с минимальной зарплатой:");
+        for (int j = 0; j < array.length; j++) {
+            if (array[j] == null) {
+                continue;
+            }
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == null) {
+                    continue;
+                }
+                if (array[i].getDepartment() == numDepartment) {
+                    min = Double.min(min, array[i].getSalary());
+                }
+            }
+            if (array[j].getDepartment() == numDepartment && array[j].getSalary() == min) {
+                System.out.println("ФИО: " + array[j].getSurName() + " " + array[j].getName() + " " + array[j].getFatherName() +
+                        ", Зарплата: " + String.format("%.2f", array[j].getSalary()) + "руб.");
             }
         }
-        if (min == calculationOfSumByDepartment(array,numDepartment)) {
+        if (min == Integer.MAX_VALUE) {
             departmentMissing();
-        } else {
-            System.out.println("Сотрудники отдела " + numDepartment + " с минимальной зарплатой:");
-            minMaxSalaryByDepartment(array, numDepartment, min);
         }
     }
+
+
+    //----------Сотрудники с максимальной зарплатой внутри отдела
     public static void maxSalaryByDepartment(Employee[] array, int numDepartment) {
         double max = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getDepartment() == numDepartment && array[i].getSalary() >= max) {
-                max = array[i].getSalary();
+        System.out.println("Сотрудники отдела " + numDepartment + " с максимальной зарплатой:");
+        for (int j = 0; j < array.length; j++) {
+            if (array[j] == null) {
+                continue;
+            }
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == null) {
+                    continue;
+                }
+                if (array[i].getDepartment() == numDepartment) {
+                    max = Double.max(max, array[i].getSalary());
+                }
+            }
+            if (array[j].getDepartment() == numDepartment && array[j].getSalary() == max) {
+                System.out.println("ФИО: " + array[j].getSurName() + " " + array[j].getName() + " " + array[j].getFatherName() +
+                        ", Зарплата: " + String.format("%.2f", array[j].getSalary()) + "руб.");
             }
         }
         if (max == 0) {
             departmentMissing();
-        } else {
-            System.out.println("Сотрудники отдела " + numDepartment + " с максимальной зарплатой:");
-            minMaxSalaryByDepartment(array, numDepartment, max);
-        }
-    }
-    public static void minMaxSalaryByDepartment(Employee[] array, int numDepartment, double salary) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getDepartment() == numDepartment && array[i].getSalary() == salary) {
-                System.out.println("ФИО: " + array[i].getSurName() + " " + array[i].getName() + " " + array[i].getFatherName() +
-                        ", Зарплата: " + String.format("%.2f", array[i].getSalary()) + "руб.");
-            }
         }
     }
 
-   //--------------Сумма затрат на зарплату по отделу
+
+    //--------------Сумма затрат на зарплату по отделу
     public static void sumByDepartment(Employee[] array, int numDepartment) {
         if (calculationOfSumByDepartment(array, numDepartment) != 0) {
             System.out.println("Сумма затрат на зарплаты по отделу " + numDepartment + ": " + String.format("%.2f", calculationOfSumByDepartment(array, numDepartment)) + "руб.");
@@ -134,9 +179,13 @@ public class Methods {
             departmentMissing();
         }
     }
+
     public static double calculationOfSumByDepartment(Employee[] array, int numDepartment) {
         double sum = 0;
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             if (array[i].getDepartment() == numDepartment) {
                 sum += array[i].getSalary();
             }
@@ -149,15 +198,18 @@ public class Methods {
         double sum = calculationOfSumByDepartment(array, numDepartment);
         int count = 0;
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             if (array[i].getDepartment() == numDepartment) {
-                count += 1;
+                count ++;
             }
         }
         if (count == 0) {
             departmentMissing();
         } else {
-            double avg = sum/count;
-            System.out.println("Средняя зарплата по отделу " + numDepartment + " равна "+ avg);
+            double avg = sum / count;
+            System.out.println("Средняя зарплата по отделу " + numDepartment + " равна " + String.format("%.2f", avg));
         }
 
     }
@@ -166,20 +218,26 @@ public class Methods {
     public static void indexByDepartment(Employee[] array, int numDepartment, double percent) {
         boolean item = false;
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             if (array[i].getDepartment() == numDepartment && percent >= 0) {
                 array[i].setSalary(array[i].getSalary() + array[i].getSalary() / 100 * percent);
                 item = true;
             }
         }
-            if (!item){
-                System.out.println("Указан неверный отдел, либо отрицательный индекс");
-            }
+        if (!item) {
+            System.out.println("Указан неверный отдел, либо отрицательный индекс");
         }
+    }
 
-        //-------------------Список сотрудников внутри отдела
+    //-------------------Список сотрудников внутри отдела
     public static void employeesByDepartment(Employee[] array, int numDepartment) {
         boolean item = false;
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             if (array[i].getDepartment() == numDepartment) {
                 System.out.println(array[i].toStringWithoutDepartment());
                 item = true;
@@ -195,12 +253,18 @@ public class Methods {
     public static void numEqual(Employee[] array, int num) {
         System.out.println("Сотрудники с зарплатой меньше " + num);
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             if (array[i].getSalary() < num) {
                 System.out.println(array[i].toStringWithoutDepartment());
             }
         }
         System.out.println("Сотрудники с зарплатой больше либо равно " + num);
         for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue;
+            }
             if (array[i].getSalary() >= num) {
                 System.out.println(array[i].toStringWithoutDepartment());
             }
@@ -208,14 +272,12 @@ public class Methods {
     }
 
 
+    //---------------Дополнительные методы выводов
+    public static void departmentInput() {
+        System.out.println("Укажите номер отдела 1-5");
+    }
 
-
-//---------------Дополнительные методы выводов
-public static void departmentInput() {
-    System.out.println("Укажите номер отдела 1-5");
-}
-
-public static void indexInput() {
+    public static void indexInput() {
         System.out.println("Введите процент индексации");
     }
 
